@@ -1,28 +1,34 @@
 import { useState } from "react";
-import Search from "./components/Search";
-import Book from "./components/Book";
+import BookMode from "./components/BookMode";
+import Title from "./components/Title";
+import Navbar from "./components/Navbar";
 
 function App() {
-  const [data, setData] = useState([]);
+  const [mode, setMode] = useState("Books");
 
-  function handleData(bookData) {
-    setData(bookData);
+  function handleSwitch(requestedMode) {
+    setMode(requestedMode);
+    //console.log(requestedMode);
   }
 
-  return (
-    <div className="App">
-      <h1 className="title">Books</h1>
-      <div className="main">
-        <Search handleData={handleData} />
-        <div className="main__books">
-          {data.length &&
-            data.map((item) => {
-              return <Book key={item.key} item={item} />;
-            })}
-        </div>
-      </div>
-    </div>
-  );
+  function render(mode) {
+    switch (mode) {
+      case "Books":
+        return <BookMode />;
+
+      // case 'Author' :
+      //   return <AuthorMode handleData={handleData}>;
+
+      default:
+        return <BookMode />;
+    }
+  }
+
+  return <div className="App">
+    <Navbar handleSwitch={handleSwitch}/>
+    <Title title={mode} />
+    {render(mode)}
+  </div>;
 }
 
 export default App;

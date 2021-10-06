@@ -14,7 +14,7 @@ const Book = ({ item }) => {
         <img src={nocovM} alt={item.title} className="book__noCover" />
       )}
       <div className="book__author">
-        Author - {item.author_name && item.author_name[0]}
+        Author - {item.author_name && item.author_name}
       </div>
       <div className="book__publisher">
         <details>
