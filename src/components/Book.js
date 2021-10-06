@@ -1,6 +1,6 @@
 import nocovM from "../img/no-cover-M.jpg";
 
-const Book = ({item}) => {
+const Book = ({ item }) => {
   return (
     <div className="book">
       <h1 className="book__title">{item.title}</h1>
@@ -14,21 +14,46 @@ const Book = ({item}) => {
         <img src={nocovM} alt={item.title} className="book__noCover" />
       )}
       <div className="book__author">
-          Author - {item.author_name && item.author_name[0]}
+        Author - {item.author_name && item.author_name[0]}
       </div>
       <div className="book__publisher">
-          Publisher - {item.publisher && item.publisher}
+        <details>
+          <summary>Publishers</summary>
+          {item.publisher &&
+            item.publisher.map((publisher, index) => {
+              return (
+                <p className="publisher" key={index}>
+                  {publisher}
+                </p>
+              );
+            })}
+        </details>
       </div>
       <div className="book__year">
-          Published {item.first_publish_year && item.first_publish_year}
+        Published {item.first_publish_year && item.first_publish_year}
       </div>
       <div className="book__genre">
-          Genre - {item.subject && item.subject}
+        <details>
+          <summary>Genres</summary>
+          {item.subject &&
+            item.subject.map((genre, index) => {
+              return (
+                <p className="genre" key={index}>
+                  {genre}
+                </p>
+              );
+            })}
+        </details>
       </div>
       <div className="book__isbn">
-          ISBN - {item.isbn && item.isbn.map((code, index) => {
-              return <p className="isbn" key={index}>{code}</p>
-          })}
+        <details>
+            <summary>ISBN/s</summary>
+            {item.isbn && item.isbn.map((isbn, index) => {
+              return <p className="isbn" key={index}>
+                {isbn}
+              </p>
+            })}
+        </details>
       </div>
     </div>
   );

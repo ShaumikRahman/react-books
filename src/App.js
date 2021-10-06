@@ -11,7 +11,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Books</h1>
+      <h1 className="title">Books</h1>
       <div className="main">
         <Search handleData={handleData} />
         <div className="main__books">
