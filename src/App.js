@@ -1,10 +1,10 @@
 import { useState } from "react";
-import BookMode from "./components/BookMode";
+import Main from "./components/Main";
 import Title from "./components/Title";
 import Navbar from "./components/Navbar";
 
 function App() {
-  const [mode, setMode] = useState("Books");
+  const [mode, setMode] = useState("By Title");
 
   function handleSwitch(requestedMode) {
     setMode(requestedMode);
@@ -13,14 +13,20 @@ function App() {
 
   function render(mode) {
     switch (mode) {
-      case "Books":
-        return <BookMode />;
+      case "By Title":
+        return <Main type='title'/>;
 
-      // case 'Author' :
-      //   return <AuthorMode handleData={handleData}>;
+      case 'By Author' :
+        return <Main type='author'/>;
+
+      case 'By Genre' :
+        return <Main type='subject'/>;
+      
+      case 'By ISBN' :
+        return <Main type='isbn'/>;
 
       default:
-        return <BookMode />;
+        return <Main type='title'/>;
     }
   }
 

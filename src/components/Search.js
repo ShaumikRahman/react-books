@@ -1,9 +1,19 @@
 import { useRef, useState, useEffect } from "react";
 
-const Search = ({ handleData, setSearching }) => {
+const Search = ({ setData, setSearching, type }) => {
   const [query, setQuery] = useState('');
   const form = useRef();
   const search = useRef();
+
+  function handleSearching(bool) {
+    setSearching(bool);
+  }
+
+  function handleData(data) {
+    let sortedData = data.sort((item1, item2) => {return item2.first_publish_year - item1.first_publish_year });
+    console.log(sortedData);
+    setData(sortedData);
+  }
 
   useEffect(() => {
     let q = query;
@@ -11,19 +21,21 @@ const Search = ({ handleData, setSearching }) => {
     q = escape(q);
 
     if (q.length) {
-      setSearching(true);
-      fetch(`http://openlibrary.org/search.json?q=${q}&limit=10`)
+      handleSearching(true);
+      fetch(`http://openlibrary.org/search.json?${type}=${q}&limit=25`)
         .then((res) => res.json())
         .then((info) => {
           console.clear();
           console.log(info);
-          setSearching(false);
+          handleSearching(false);
           handleData(info.docs);
         });
     } else {
       form.current.reset();
       search.current.classList.add("invalid");
     }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query]);
 
   const toggleRed = () => {

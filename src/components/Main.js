@@ -2,17 +2,13 @@ import { useState } from "react";
 import Search from "./Search";
 import Book from "./Book";
 
-const BookMode = () => {
+const Main = ({type}) => {
     const [data, setData] = useState([]);
     const [searching, setSearching] = useState(false);
 
-    function handleData(bookData) {
-        setData(bookData);
-      }
-
     return (
       <div className="main">
-        <Search handleData={handleData} setSearching={setSearching} />
+        <Search setData={setData} setSearching={setSearching} type={type}/>
         <div className="main__books">
           {
             searching && <div className="searching">
@@ -28,4 +24,4 @@ const BookMode = () => {
     )
 }
 
-export default BookMode
+export default Main
