@@ -1,10 +1,20 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Search from "./Search";
 import Book from "./Book";
 
 const Main = ({type}) => {
     const [data, setData] = useState([]);
     const [searching, setSearching] = useState(false);
+    const [empty, setEmpty] = useState(true);
+
+    useEffect(() => {
+      if (data.length || searching) {
+        setEmpty(false);
+      } else {
+        setEmpty(true);
+      }
+
+    }, [data, searching]);
 
     return (
       <div className="main">
@@ -19,6 +29,11 @@ const Main = ({type}) => {
             data.map((item) => {
               return <Book key={item.key} item={item} />;
             })}
+            {
+              empty && <div className="empty">
+                <p className="empty__text">No results</p>
+              </div>
+            }
         </div>
       </div>
     )

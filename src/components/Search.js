@@ -47,12 +47,13 @@ const Search = ({ setData, setSearching, type }) => {
       <form ref={form} className="searchForm" onSubmit={(e) => {e.preventDefault(); setQuery(e.target.search.value);}}>
         <input
           ref={search}
+          className="searchForm__search"
           type="search"
           name="search"
           id="search"
           onChange={toggleRed}
         />
-        <input type="submit" value="search" />
+        <input type="submit" value="search" className="searchForm__submit" />
       </form>
     </div>
   );

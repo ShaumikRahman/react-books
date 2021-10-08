@@ -2,20 +2,20 @@ const Navbar = ({handleSwitch}) => {
     
   
     return (
-    <div className="App__Navbar">
-      <nav className="navbar">
-        <button onClick={() => handleSwitch('By Title')} className="mode">
-          Books
-        </button>
-        <button onClick={() => handleSwitch('By Author')} className="mode">
-          Authors
-        </button>
-        <button onClick={() => handleSwitch('By Genre')} className="mode">
+    <div className="navbar">
+      <nav className="nav">
+        <h2 onClick={() => handleSwitch('By Title')} className="mode">
+          Title
+        </h2>
+        <h2 onClick={() => handleSwitch('By Author')} className="mode">
+          Author
+        </h2>
+        <h2 onClick={() => handleSwitch('By Genre')} className="mode">
           Genre
-        </button>
-        <button onClick={() => handleSwitch('By ISBN')} className="mode">
+        </h2>
+        <h2 onClick={() => handleSwitch('By ISBN')} className="mode">
           ISBN
-        </button>
+        </h2>
       </nav>
     </div>
   );

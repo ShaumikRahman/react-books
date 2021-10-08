@@ -2,8 +2,8 @@ body {
   margin: 0px;
   padding: 0px;
   font-family: "Roboto", sans-serif;
-  background-color: #b0b0cb;
-    color: black;
+  background-color: #161722;
+    color: #fafafa;
 }
 
 body::-webkit-scrollbar {
@@ -14,16 +14,22 @@ body::-webkit-scrollbar {
   display: flex;
   justify-content: center;
   flex-direction: column;
+  gap: 1rem;
 
-  &__Navbar {
-    background-color: #787878;
+  .navbar {
+    background-color: #363955;
+    box-shadow: 0px 16px 16px 16px rgba(0,0,0,0.5);
 
-    .navbar {
+    .nav {
       display: flex;
       justify-content: center;
-      gap: 1rem;
+      gap: .5rem;
       //margin-right: 1rem;
-      padding: 1rem 0rem;
+      padding: .5rem 0rem;
+
+      .mode {
+        cursor: pointer;
+      }
     }
   }
 
@@ -43,6 +49,26 @@ body::-webkit-scrollbar {
         flex-direction: column;
         align-items: center;
         gap: 1rem;
+
+        &__search, &__submit {
+          background-color: #2f3253;
+          color: #fafafa;
+          border: none;
+          outline: none;
+          padding: .5rem;
+          border-radius: .5rem;
+        }
+
+        &__search {
+          text-align: center;
+          &::-webkit-search-cancel-button {
+            display: none;
+          }
+        }
+
+        &__submit {
+          cursor: pointer;
+        }
       }
     }
 
