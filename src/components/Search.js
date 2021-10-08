@@ -1,37 +1,45 @@
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 
-const Search = ({handleData}) => {
-    const form = useRef();
-    const search = useRef();
-    
-  function validate(e) {
-    e.preventDefault();
-    let q = e.target.search.value.trim();
+const Search = ({ handleData, setSearching }) => {
+  const [query, setQuery] = useState('');
+  const form = useRef();
+  const search = useRef();
+
+  useEffect(() => {
+    let q = query;
     q = q.replace(/\s\s+/g, " ");
     q = escape(q);
 
     if (q.length) {
-        fetch(`http://openlibrary.org/search.json?q=${q}&limit=10`)
-      .then((res) => res.json())
-      .then((info) => {
-        console.clear();
-        console.log(info);
-        handleData(info.docs);
-      })
+      setSearching(true);
+      fetch(`http://openlibrary.org/search.json?q=${q}&limit=10`)
+        .then((res) => res.json())
+        .then((info) => {
+          console.clear();
+          console.log(info);
+          setSearching(false);
+          handleData(info.docs);
+        });
     } else {
-        form.current.reset();
-        search.current.classList.add('invalid');
+      form.current.reset();
+      search.current.classList.add("invalid");
     }
-  }
+  }, [query]);
 
   const toggleRed = () => {
-    search.current.classList.remove('invalid');
-}
+    search.current.classList.remove("invalid");
+  };
 
   return (
-    <div className="main__search">
-      <form ref={form} className="searchForm" onSubmit={(e) => validate(e)}>
-        <input ref={search} type="search" name="search" id="search" onChange={toggleRed} />
+    <div className="search">
+      <form ref={form} className="searchForm" onSubmit={(e) => {e.preventDefault(); setQuery(e.target.search.value);}}>
+        <input
+          ref={search}
+          type="search"
+          name="search"
+          id="search"
+          onChange={toggleRed}
+        />
         <input type="submit" value="search" />
       </form>
     </div>

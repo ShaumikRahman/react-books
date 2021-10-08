@@ -20,9 +20,9 @@ body::-webkit-scrollbar {
 
     .navbar {
       display: flex;
-      justify-content: flex-end;
+      justify-content: center;
       gap: 1rem;
-      margin-right: 1rem;
+      //margin-right: 1rem;
       padding: 1rem 0rem;
     }
   }
@@ -31,21 +31,30 @@ body::-webkit-scrollbar {
     text-align: center;
   }
 
-  .BookMain {
+  .main {
     display: flex;
     align-items: center;
     flex-direction: column;
     gap: 1rem;
 
-    &__search {
-      form {
+    .search {
+      .searchForm {
         display: flex;
         flex-direction: column;
+        align-items: center;
         gap: 1rem;
       }
     }
 
     &__books {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+
+      .searching {
+        text-align: center;
+      }
+
       .book {
         display: flex;
         flex-direction: column;
