@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect } from "react";
 
-const Search = ({ setData, setSearching, type }) => {
+const Search = ({ setData, setSearching, setError, type }) => {
   const [query, setQuery] = useState('');
   const form = useRef();
   const search = useRef();
@@ -21,15 +21,21 @@ const Search = ({ setData, setSearching, type }) => {
     q = escape(q);
 
     if (q.length) {
+      setError(false);
       handleSearching(true);
       fetch(`http://openlibrary.org/search.json?${type}=${q}&limit=25`)
-        .then((res) => res.json())
-        .then((info) => {
+        .then(res => res.json())
+        .then(info => {
           console.clear();
           console.log(info);
           handleSearching(false);
           handleData(info.docs);
-        });
+        })
+        .catch(error => {
+          handleSearching(false);
+          handleData([]);
+          setError(true);
+        })
     } else {
       form.current.reset();
       search.current.classList.add("invalid");
@@ -51,6 +57,7 @@ const Search = ({ setData, setSearching, type }) => {
           type="search"
           name="search"
           id="search"
+          placeholder={`search by ${type}`}
           onChange={toggleRed}
         />
         <input type="submit" value="search" className="searchForm__submit" />

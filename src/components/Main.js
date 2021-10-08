@@ -6,6 +6,7 @@ const Main = ({type}) => {
     const [data, setData] = useState([]);
     const [searching, setSearching] = useState(false);
     const [empty, setEmpty] = useState(true);
+    const [error, setError] = useState(false);
 
     useEffect(() => {
       if (data.length || searching) {
@@ -16,10 +17,22 @@ const Main = ({type}) => {
 
     }, [data, searching]);
 
+    useEffect(() => {
+      setEmpty(false);
+      setSearching(false);
+    }, [error]);
+
     return (
       <div className="main">
-        <Search setData={setData} setSearching={setSearching} type={type}/>
+        <Search setData={setData} setSearching={setSearching} setError={setError} type={type}/>
         <div className="main__books">
+          {
+            error && <div className="error">
+              <p className="error__text">
+                Error... Try again later
+              </p>
+            </div>
+          }
           {
             searching && <div className="searching">
               <p className="searching__text">Searching...</p>
