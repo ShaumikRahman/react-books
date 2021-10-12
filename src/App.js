@@ -2,9 +2,12 @@ import { useState } from "react";
 import Main from "./components/Main";
 import Title from "./components/Title";
 import Navbar from "./components/Navbar";
+import Jump from "./components/Jump";
 
 function App() {
   const [mode, setMode] = useState("By Title");
+  
+  
 
   function handleSwitch(requestedMode) {
     setMode(requestedMode);
@@ -34,6 +37,7 @@ function App() {
     <Navbar handleSwitch={handleSwitch}/>
     <Title title={mode} />
     {render(mode)}
+    <Jump />
   </div>;
 }
 
