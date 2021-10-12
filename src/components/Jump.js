@@ -9,7 +9,6 @@ const Jump = () => {
   };
 
   useEffect(() => {
-    console.log(Y);
     if (Y > 500) {
       jump.current.classList.add("visible");
     } else {

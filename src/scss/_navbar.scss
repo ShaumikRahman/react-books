@@ -1,0 +1,16 @@
+.navbar {
+    background-color: #363955;
+    box-shadow: 0px 16px 16px 16px rgba(0, 0, 0, 0.5);
+
+    .nav {
+      display: flex;
+      justify-content: space-evenly;
+      gap: 0.5rem;
+      //margin-right: 1rem;
+      padding: 0.5rem 0rem;
+
+      .mode {
+        cursor: pointer;
+      }
+    }
+  }

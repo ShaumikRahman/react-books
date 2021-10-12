@@ -13,10 +13,23 @@ const Book = ({ item }) => {
       ) : (
         <img src={nocovM} alt={item.title} className="book__noCover" />
       )}
-      <div className="book__author">
-        Author - {item.author_name && item.author_name[0]}
+      <div className="book__year">
+        Published {item.first_publish_year && item.first_publish_year}
       </div>
-      <div className="book__publisher">
+      <span className="book__author">
+        <details>
+          <summary>Authors</summary>
+          {item.author_name &&
+            item.author_name.map((author, index) => {
+              return (
+                <p className="author" key={index}>
+                  {author}
+                </p>
+              );
+            })}
+        </details>
+      </span>
+      <span className="book__publisher">
         <details>
           <summary>Publishers</summary>
           {item.publisher &&
@@ -28,11 +41,8 @@ const Book = ({ item }) => {
               );
             })}
         </details>
-      </div>
-      <div className="book__year">
-        Published {item.first_publish_year && item.first_publish_year}
-      </div>
-      <div className="book__genre">
+      </span>
+      <span className="book__genre">
         <details>
           <summary>Genres</summary>
           {item.subject &&
@@ -44,17 +54,20 @@ const Book = ({ item }) => {
               );
             })}
         </details>
-      </div>
-      <div className="book__isbn">
+      </span>
+      <span className="book__isbn">
         <details>
-            <summary>ISBN/s</summary>
-            {item.isbn && item.isbn.map((isbn, index) => {
-              return <p className="isbn" key={index}>
-                {isbn}
-              </p>
+          <summary>ISBN/s</summary>
+          {item.isbn &&
+            item.isbn.map((isbn, index) => {
+              return (
+                <p className="isbn" key={index}>
+                  {isbn}
+                </p>
+              );
             })}
         </details>
-      </div>
+      </span>
     </div>
   );
 };
