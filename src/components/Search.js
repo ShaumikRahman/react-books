@@ -10,9 +10,10 @@ const Search = ({ setData, setSearching, setError, type }) => {
   }
 
   function handleData(data) {
-    let sortedData = data.sort((item1, item2) => {return item2.first_publish_year - item1.first_publish_year });
-    console.log(sortedData);
-    setData(sortedData);
+    // let sortedData = data.sort((item1, item2) => {return item2.first_publish_year - item1.first_publish_year });
+    // console.log(sortedData);
+    // setData(sortedData);
+    setData(data);
   }
 
   useEffect(() => {
@@ -23,7 +24,7 @@ const Search = ({ setData, setSearching, setError, type }) => {
     if (q.length) {
       setError(false);
       handleSearching(true);
-      fetch(`http://openlibrary.org/search.json?${type}=${q}&limit=25`)
+      fetch(`http://openlibrary.org/search.json?${type}=${q}&limit=100`)
         .then(res => res.json())
         .then(info => {
           console.clear();
@@ -44,7 +45,7 @@ const Search = ({ setData, setSearching, setError, type }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query]);
 
-  const toggleRed = () => {
+  const normalize = () => {
     search.current.classList.remove("invalid");
   };
 
@@ -58,7 +59,7 @@ const Search = ({ setData, setSearching, setError, type }) => {
           name="search"
           id="search"
           placeholder={`search by ${type}`}
-          onChange={toggleRed}
+          onChange={normalize}
         />
         <input type="submit" value="search" className="searchForm__submit" />
       </form>

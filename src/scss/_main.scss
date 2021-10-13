@@ -37,8 +37,9 @@
 
     &__books {
       display: flex;
-      flex-direction: column;
-      gap: 2rem;
+      justify-content: center;
+      width: 95%;
+      flex-wrap: wrap;
 
       .searching {
         text-align: center;
@@ -50,32 +51,44 @@
         gap: 1rem;
         text-align: center;
         flex-wrap: wrap;
+        margin: 0 auto 1rem auto;
         overflow-wrap: anywhere;
+        flex: 100%;
 
-        & > span > details{
+        @media (min-width: 48rem) {
+            flex: 50%;
+          }
+
+          @media (min-width: 80rem) {
+            flex: 33%;
+          }
+
+          @media (min-width: 120rem) {
+            flex: 25%;
+          }
+
+          @media (min-width: 160rem) {
+            flex: 20%;
+          }
+
+        & > span > details {
             display: inline-block;
             cursor: pointer;
+
+            summary {
+              cursor: pointer;
+            }
+
+            & > p {
+              cursor: initial;
+            }
         }
 
         &__cover,
         &__noCover {
-          margin: auto;
+          margin: 0 auto;
           width: 11.25rem;
           height: 16.875rem;
-        }
-
-        &__publisher {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 1rem;
-          justify-content: center;
-        }
-
-        &__genre {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 1rem;
-          justify-content: center;
         }
       }
     }

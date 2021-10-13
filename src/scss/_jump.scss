@@ -1,21 +1,30 @@
 .jump {
-    position: fixed;
-    right: 12%;
-    bottom: 4%;
-    width: 1rem;
-    height: 1rem;
-    font-size: 0.8rem;
-    text-align: center;
-    cursor: pointer;
-    padding: 0.5rem;
-    transform: scale(0);
-    background-color: #363955;
-    border-radius: 50%;
-    color: #fafafa;
+  position: fixed;
+  right: 12%;
+  bottom: 4%;
+  width: 1rem;
+  height: 1rem;
+  font-size: 0.8rem;
+  text-align: center;
+  cursor: pointer;
+  padding: 0.5rem;
+  transform: scale(0);
+  background-color: #363955;
+  border-radius: 50%;
+  color: #fafafa;
+  transition: all 250ms ease-in-out;
+
+  @media (min-width: 48rem) {
+    right: 10%;
+    bottom: 6%;
+  }
+
+  &.visible {
+    transform: scale(2);
     transition: all 250ms ease-in-out;
 
-    &.visible {
-      transform: scale(2);
-      transition: all 250ms ease-in-out;
+    @media (min-width: 48rem) {
+      transform: scale(3);
     }
   }
+}

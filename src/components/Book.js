@@ -3,7 +3,7 @@ import nocovM from "../img/no-cover-M.jpg";
 const Book = ({ item }) => {
   return (
     <div className="book">
-      <h1 className="book__title">{item.title}</h1>
+      <h2 className="book__title">{item.title}</h2>
       {item.cover_i ? (
         <img
           src={`http://covers.openlibrary.org/b/id/${item.cover_i}-M.jpg`}
