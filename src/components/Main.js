@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Search from "./Search";
 import Book from "./Book";
 
@@ -7,6 +7,8 @@ const Main = ({ type }) => {
   const [searching, setSearching] = useState(false);
   const [empty, setEmpty] = useState(true);
   const [error, setError] = useState(false);
+
+  const books = useRef();
 
   useEffect(() => {
     if (data.length || searching) {
@@ -21,6 +23,14 @@ const Main = ({ type }) => {
     setSearching(false);
   }, [error]);
 
+  useEffect(() => {
+    if (searching) {
+      books.current.classList.add('skeleton');
+    } else {
+      books.current.classList.remove('skeleton');
+    }
+  }, [searching]);
+
   return (
     <div className="main">
       <Search
@@ -34,7 +44,7 @@ const Main = ({ type }) => {
           <p className="searching__text">Searching...</p>
         </div>
       )}
-      <div className="main__books">
+      <div className="main__books" ref={books}>
         {error && (
           <div className="error">
             <p className="error__text">Error... Try again later</p>

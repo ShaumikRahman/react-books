@@ -3,6 +3,7 @@ import Main from "./components/Main";
 import Title from "./components/Title";
 import Navbar from "./components/Navbar";
 import Jump from "./components/Jump";
+import Footer from "./components/Footer";
 
 function App() {
   const [mode, setMode] = useState("By Title");
@@ -38,6 +39,7 @@ function App() {
     <Title title={mode} />
     {render(mode)}
     <Jump />
+    <Footer />
   </div>;
 }
 
