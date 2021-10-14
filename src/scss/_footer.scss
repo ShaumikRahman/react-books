@@ -1,0 +1,31 @@
+.footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    padding: 3rem;
+    background: linear-gradient(to bottom, #3b3e67, #28263e);
+
+    .footerText {
+      text-align: center;
+      color: white;
+    }
+
+    a {
+      color:#b5b5fb; 
+      text-decoration: none;
+    }
+
+    .react {
+      width: 3.5rem;
+    }
+
+    .sass {
+      width: 4rem;
+      height: 4rem;
+    }
+
+    img {
+      vertical-align: middle;
+    }
+  }
