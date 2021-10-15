@@ -24,7 +24,7 @@ const Search = ({ setData, setSearching, setError, type }) => {
     if (q.length) {
       setError(false);
       handleSearching(true);
-      fetch(`http://openlibrary.org/search.json?${type}=${q}&limit=100`)
+      fetch(`https://openlibrary.org/search.json?${type}=${q}&limit=100`)
         .then(res => res.json())
         .then(info => {
           console.clear();
