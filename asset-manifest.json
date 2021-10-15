@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.js": "/react-books/static/js/main.18c78852.chunk.js",
-    "main.js.map": "/react-books/static/js/main.18c78852.chunk.js.map",
+    "main.js": "/react-books/static/js/main.d1c9f69c.chunk.js",
+    "main.js.map": "/react-books/static/js/main.d1c9f69c.chunk.js.map",
     "runtime-main.js": "/react-books/static/js/runtime-main.5d956812.js",
     "runtime-main.js.map": "/react-books/static/js/runtime-main.5d956812.js.map",
     "static/js/2.fba83a4f.chunk.js": "/react-books/static/js/2.fba83a4f.chunk.js",
@@ -14,6 +14,6 @@
   "entrypoints": [
     "static/js/runtime-main.5d956812.js",
     "static/js/2.fba83a4f.chunk.js",
-    "static/js/main.18c78852.chunk.js"
+    "static/js/main.d1c9f69c.chunk.js"
   ]
 }
